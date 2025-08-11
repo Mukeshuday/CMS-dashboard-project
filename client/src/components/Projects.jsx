@@ -3,13 +3,13 @@ import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css"
 import "../components-styling/Projects.css"
-
+import { BACKEND_URL } from "../config";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/project/my-projects",{
+    axios.get(`${BACKEND_URL}/api/project/my-projects`,{
       headers: {
         Authorization: localStorage.getItem("token")
       }
@@ -21,7 +21,7 @@ const Projects = () => {
   
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/project/all")
+    axios.get(`${BACKEND_URL}/api/project/all`)
       .then(res => setProjects(res.data || []))
       .catch(err => console.error(err));
       setProjects([]);

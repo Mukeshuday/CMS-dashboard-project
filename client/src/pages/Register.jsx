@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../page-styles/Register.css";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../config";
 
 const Register = () => {
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
@@ -19,7 +20,7 @@ const Register = () => {
     setStatus("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", formData);
+      const res = await axios.post(`${BACKEND_URL}/api/auth/register`, formData);
       localStorage.setItem("token", res.data.token);
       if (res.data.username) {
         localStorage.setItem("username", res.data.username);

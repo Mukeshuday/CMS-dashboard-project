@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../page-styles/Dashboard.css"
 import { useTheme } from "../context/ThemeContext";
+import { BACKEND_URL } from "../config";
 
 const Dashboard = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const Dashboard = () => {
 
   const fetchProjects = async () =>{
     try{
-      await axios.get("http://localhost:5000/api/project/my-projects",
+      await axios.get(`${BACKEND_URL}/api/project/my-projects`,
       {
         headers: {
           Authorization: localStorage.getItem("token")
@@ -45,7 +46,7 @@ const Dashboard = () => {
         return;
       }
 
-      await axios.post("http://localhost:5000/api/project/add", {
+      await axios.post(`${BACKEND_URL}/api/project/add`, {
         ...formData,
         techStack: formData.techStack.split(",")
       },

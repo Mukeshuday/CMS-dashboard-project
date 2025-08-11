@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../page-styles/Contact.css";
 import { useTheme } from "../context/ThemeContext";
+import { BACKEND_URL } from "../config";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -16,7 +17,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/contact/send", formData);
+      await axios.post(`${BACKEND_URL}/api/contact/send`, formData);
       setStatus("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
