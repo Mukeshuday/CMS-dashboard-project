@@ -1,8 +1,7 @@
 [build]
-base = "client"
-command="npm run build"
-publish="client/build"
+    base = "client"
+    publish="build"
+    command="npm run build"
 
 [build.environment]
-NODE_VERSION ="18"
-REACT_APP_API_URL ="http://localhost:5000"
+    NODE_VERSION ="18"
