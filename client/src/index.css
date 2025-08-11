@@ -1,0 +1,75 @@
+/* index.css */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* Theme Variables */
+.light-theme {
+  --bg-color: #f5f5f7;
+  --text-color: #1d1d1f;
+  --accent-color: #0071e3;
+  --gradient-bg: linear-gradient(135deg, #ffffff, #f0f0f5, #e4e4ea);
+}
+
+.dark-theme {
+  --bg-color: #0a0a0a;
+  --text-color: #f5f5f7;
+  --accent-color: #0af;
+  --gradient-bg: linear-gradient(135deg, #0a0a0a, #1a1a1a, #000000);
+}
+
+/* Animated Gradient Background */
+body {
+  background: var(--gradient-bg);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Smooth color links */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ff4081;
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4081;
+}
