@@ -6,7 +6,11 @@ require("dotenv").config();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+    origin: 'https://eazybytes-cms-project.netlify.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 app.use(express.json());
 
 // Contact Routes
@@ -43,6 +47,6 @@ mongoose
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at ${PORT}`);
 });
 
